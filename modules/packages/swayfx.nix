@@ -1,3 +1,5 @@
+{ inputs, self, ... }:
+
 {
   flake.modules.nixos.packages-swayfx = { pkgs, lib, ... }:
     let
