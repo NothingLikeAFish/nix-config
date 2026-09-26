@@ -2,7 +2,7 @@
   flake.modules.nixos.packages-swayfx = { pkgs, lib, ... }:
     let
       config = pkgs.writeText "config" ''
-        bindsym $mod+Return exec ${lib.getExe pkgs.foot}
+        bindsym Mod4+Return exec ${lib.getExe pkgs.foot}
       '';
     in {
     programs.sway = {
