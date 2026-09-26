@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.packages.swayfx = { pkgs, ... }: {
+  flake.modules.nixos.packages.swayfx = { pkgs, ... }:
     let
       config = pkgs.writeText "config" ''
         # SwayFX settings
@@ -284,7 +284,7 @@
 
         include @sysconfdir@/sway/config.d/*
       '';
-    in
+    in {
     programs.sway = {
       enable = true;
       package = pkgs.swayfx;
