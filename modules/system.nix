@@ -2,7 +2,7 @@
 
 {
   flake.modules.nixos.system.default = {
-    imports = with self.modules; [
+    imports = with self.modules.nixos; [
       system.nix
       system.audio
       system.locales

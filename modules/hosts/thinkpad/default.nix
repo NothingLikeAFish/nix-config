@@ -12,7 +12,7 @@
       users.jasper # User import
 
       packages.all
-      services
+      #services
       theme
     ];
 

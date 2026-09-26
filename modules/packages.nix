@@ -1,8 +1,8 @@
 { inputs, self, ... }:
 
 {
-  flake.modules.nixos.packages.default = {
-    imports = with self.nixos.modules; [
+  flake.modules.nixos.packages.all = { pkgs, ... }: {
+    imports = with self.modules.nixos; [
       packages.cli
       packages.fonts
       packages.browsers
