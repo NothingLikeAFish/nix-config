@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.packages.swayfx = { pkgs, ... }:
+  flake.modules.nixos.packages.swayfx = { pkgs, ... }:
     let
       config = pkgs.writeText "config" ''
         # SwayFX settings

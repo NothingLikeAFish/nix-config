@@ -3,11 +3,11 @@
 {
   flake.nixosConfigurations.thinkpad = inputs.nixpkgs.lib.nixosSystem {
     system = "x86_64-linux";
-    modules = [ self.nixosModules.hosts.thinkpad ./_hardware-configuration.nix ];
+    modules = [ self.modules.nixos.hosts.thinkpad ./_hardware-configuration.nix ];
   };
 
-  flake.nixosModules.hosts.thinkpad = { config, pkgs, ... }: {
-    imports = with self.nixosModules; [
+  flake.modules.nixos.hosts.thinkpad = { config, pkgs, ... }: {
+    imports = with self.modules.nixos; [
       system.all
       users.jasper # User import
 
