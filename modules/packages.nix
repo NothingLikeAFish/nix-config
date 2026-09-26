@@ -14,6 +14,7 @@
   flake.modules.nixos.packages-fonts = { pkgs, ... }: {
     fonts.packages = with pkgs; [
       nerd-fonts.fira-code
+      nerd-fonts.jetbrains-mono
     ];
   };
 
@@ -29,5 +30,9 @@
     environment.systemPackages = with pkgs; [
       firefox
     ];
+  };
+
+  flake.modules.nixos.packages-swayfx = { pkgs, ... }: { # Decide to keep here or move to modules/packages
+    programs.sway = { enable = true; package = self.packages.${pkgs.stdenv.hostPlatform.system}.swayfx; };
   };
 }

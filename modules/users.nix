@@ -1,6 +1,12 @@
 { inputs, self, ... }:
 
 {
+  flake.modules.nixos.users = {
+    imports = with self.modules.nixos; [
+      users-jasper
+    ];
+  };
+
   flake.modules.nixos.users-jasper = { pkgs, ... }: {
     users.users.jasper = {
       isNormalUser = true;
