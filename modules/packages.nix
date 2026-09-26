@@ -13,7 +13,7 @@
 
   flake.modules.nixos.packages.fonts = { pkgs, ... }: {
     fonts.packages = with pkgs; [
-      pkgs.nerd-fonts.fira-code
+      nerd-fonts.fira-code
     ];
   };
 
