@@ -1,9 +1,9 @@
 {
-  flake.modules.nixos.services.system = {
+  flake.nixosModules.services.system = {
     services.printing.enable = true; # Printing support
   };
 
-  flake.modules.nixos.services.user = {
+  flake.nixosModules.services.user = {
 
   };
 }

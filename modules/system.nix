@@ -1,8 +1,8 @@
 { inputs, self, ... }:
 
 {
-  flake.modules.nixos.system.default = {
-    imports = with self.modules.nixos; [
+  flake.nixosModules.system.all = {
+    imports = with self.nixosModules; [
       system.nix
       system.audio
       system.locales
@@ -10,7 +10,7 @@
     ];
   };
 
-  flake.modules.nixos.system.nix = {
+  flake.nixosModules.system.nix = {
     nix.settings.experimental-features = [ "nix-command" "flakes" ]; # Enable flakes and other good stuff
     nixpkgs.config.allowUnfree = true; # Allow unfree packages
     nix.optimise = { # Optimise store
@@ -24,7 +24,7 @@
     };
   };
 
-  flake.modules.nixos.system.audio = {
+  flake.nixosModules.system.audio = {
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
@@ -35,7 +35,7 @@
     };
   };
 
-  flake.modules.nixos.system.locales = {
+  flake.nixosModules.system.locales = {
     time.timeZone = "Australia/Sydney"; # Time zone
     i18n.defaultLocale = "en_AU.UTF-8"; # Locales
     i18n.extraLocaleSettings = {
@@ -51,7 +51,7 @@
     };
   };
 
-  flake.modules.nixos.system.networking = {
+  flake.nixosModules.system.networking = {
     networking.networkmanager.enable = true;
     # Add bluetooth
   };

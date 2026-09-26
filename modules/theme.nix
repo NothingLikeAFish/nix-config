@@ -1,7 +1,7 @@
 { inputs, self, ... }:
 
 {
-  flake.modules.nixos.theme = { config, ... }: {
+  flake.nixosModules.theme = { config, ... }: {
     imports = [ inputs.stylix.nixosModules.stylix ];
 
     stylix = {

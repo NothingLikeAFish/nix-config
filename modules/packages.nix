@@ -1,8 +1,8 @@
 { inputs, self, ... }:
 
 {
-  flake.modules.nixos.packages.all = { pkgs, ... }: {
-    imports = with self.modules.nixos; [
+  flake.nixosModules.packages = { pkgs, ... }: {
+    imports = with self.nixosModules; [
       packages.cli
       packages.fonts
       packages.browsers
@@ -11,13 +11,13 @@
     ];
   };
 
-  flake.modules.nixos.packages.fonts = { pkgs, ... }: {
+  flake.nixosModules.packages-fonts = { pkgs, ... }: {
     fonts.packages = with pkgs; [
       nerd-fonts.fira-code
     ];
   };
 
-  flake.modules.nixos.packages.cli = { pkgs, ... }: {
+  flake.nixosModules.packages-cli = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       git
       micro
@@ -25,7 +25,7 @@
     ];
   };
 
-  flake.modules.nixos.packages.browsers = { pkgs, ... }: {
+  flake.nixosModules.packages-browsers = { pkgs, ... }: {
     environment.systemPackages = with pkgs; [
       firefox
     ];

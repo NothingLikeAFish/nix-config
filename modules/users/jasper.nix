@@ -1,7 +1,7 @@
 { inputs, self, ... }:
 
 {
-  flake.modules.nixos.users.jasper = { pkgs, ... }: {
+  flake.nixosModules.users.jasper = { pkgs, ... }: {
     users.users.jasper = {
       isNormalUser = true;
       description = "Jasper";
