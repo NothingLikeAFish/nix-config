@@ -5,6 +5,7 @@
     imports = with self.nixos.modules; [
       packages.cli
       packages.fonts
+      packages.browsers
 
       packages.swayfx
     ];
@@ -21,6 +22,12 @@
       git
       micro
       tree
+    ];
+  };
+
+  flake.modules.nixos.packages.browsers = { pkgs, ... }: {
+    environment.systemPackages = with pkgs; [
+      firefox
     ];
   };
 }
