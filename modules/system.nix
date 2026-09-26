@@ -1,7 +1,7 @@
 { inputs, self, ... }:
 
 {
-  flake.modules.nixos.system = {
+  flake.modules.nixos.system.default = {
     imports = with self.modules; [
       system.nix
       system.audio

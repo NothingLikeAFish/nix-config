@@ -8,10 +8,10 @@
 
   flake.modules.nixos.hosts.thinkpad = { config, pkgs, ... }: {
     imports = with self.modules.nixos; [
-      system
+      system.all
       users.jasper # User import
 
-      packages
+      packages.all
       services
       theme
     ];
