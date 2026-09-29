@@ -8,6 +8,7 @@
 
   flake.modules.nixos.hosts-thinkpad = { config, pkgs, ... }: {
     imports = with self.modules.nixos; [
+      home-manager
       system
       users
 
