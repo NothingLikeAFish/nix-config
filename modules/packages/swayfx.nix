@@ -26,10 +26,10 @@
 
           bars = [ { command = "${lib.getExe pkgs.waybar} --log-level off"; } ]; # Waybar
 
-          bindswitches = [ # Clamshell logic
+          bindswitches = { # Clamshell logic
             "lid:on" = { reload = true; locked = true; action = "output eDP-1 diable"; };
             "lid:off" = { reload = true; locked = true; action = "output eDP-1 enable"; };
-          ];
+          };
 
           input = {
             "type:touchpad" = {
