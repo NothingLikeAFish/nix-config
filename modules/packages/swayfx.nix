@@ -1,13 +1,13 @@
 { inputs, self, ... }:
 
 {
-  flake.modules.nixos.packages-swayfx = { pkgs, lib, config, colours, ... }: {
+  flake.modules.nixos.packages-swayfx = { pkgs, lib, colours, ... }: {
     programs.sway = {
       enable = true;
       package = pkgs.swayfx;
     };
 
-    home-manager.sharedModules = {
+    home-manager.sharedModules = { config, ... }: {
       wayland.windowManager.sway = {
         enable = true;
         package = pkgs.swayfx;
