@@ -3,6 +3,7 @@
 {
   flake.modules.nixos.theme = {
     imports = with self.modules.nixos; [
+      theme-colours
       theme-cursor
     ];
   };
@@ -14,7 +15,7 @@
       image = self.wallpaper;
       autoEnable = false;
     };
-    _module.args.colours = config.lib.stylix.colours; # Exports theme
+    _module.args.colours = config.lib.stylix.colors; # Exports theme
   };
 
   flake.modules.nixos.theme-cursor = { pkgs, ... }: {
