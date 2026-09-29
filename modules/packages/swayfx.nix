@@ -22,7 +22,7 @@
             { command = lib.getExe pkgs.autotiling; }
           ];
 
-          output."*".bg = "${wallpaper} fill"; # Wallpaper
+          output."*".bg = "${self.wallpaper} fill"; # Wallpaper
 
           bars = [ { command = "${lib.getExe pkgs.waybar} --log-level off"; } ]; # Waybar
 
