@@ -1,7 +1,7 @@
 { inputs, self, ... }:
 
 {
-  flake.modules.nixos.packages-swayfx = { pkgs, lib, colours, ... }: {
+  flake.modules.nixos.packages-swayfx = { pkgs, lib, config, colours, ... }: {
     programs.sway = {
       enable = true;
       package = pkgs.swayfx;
