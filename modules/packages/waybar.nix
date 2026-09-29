@@ -1,7 +1,7 @@
 { inputs, self, ... }:
 
 {
-  flake.modules.homeManager.waybar = { pkgs, lib, ... }: {
+  flake.modules.homeManager.waybar = { pkgs, lib, colours, ... }: {
     programs.waybar = {
       enable = true;
       settings = {
@@ -17,7 +17,7 @@
             "network"
             "battery"
           ];
-          # MODULE CONFIGURATION
+
           "sway/window" = {
             min-length = 50;
           };
@@ -27,7 +27,7 @@
           };
         };
       };
-      # STYLING
+
       style = ''
         * {
           font-family: JetBrainsMono Nerd Font;
