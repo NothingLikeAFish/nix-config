@@ -14,7 +14,7 @@
       image = self.wallpaper;
       autoEnable = false;
     };
-    _module.args.colours = config.lib.stylix.colors; # Exports theme
+    _module.args.colours = config.lib.stylix.colours; # Exports theme
   };
 
   flake.modules.nixos.theme-cursor = { pkgs, ... }: {
