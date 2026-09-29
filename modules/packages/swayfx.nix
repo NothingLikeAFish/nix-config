@@ -7,7 +7,7 @@
       package = pkgs.swayfx;
     };
 
-    home-manager.sharedModules = { config, ... }: {
+    home-manager.users.jasper = {
       wayland.windowManager.sway = {
         enable = true;
         package = pkgs.swayfx;

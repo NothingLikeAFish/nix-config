@@ -19,7 +19,7 @@
   };
 
   flake.modules.nixos.theme-cursor = { pkgs, ... }: {
-    home-manager.sharedModules = {
+    home-manager.users.jasper = {
       home.pointerCursor = {
         enable = true;
         package = pkgs.bibata-cursors;

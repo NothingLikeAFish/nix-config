@@ -2,7 +2,7 @@
 
 {
   flake.modules.nixos.packages-waybar = { pkgs, lib, colours, ... }: {
-    home-manager.sharedModules = {
+    home-manager.users.jasper = {
       programs.waybar = {
         enable = true;
         settings = {
