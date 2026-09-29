@@ -1,3 +1,3 @@
 {
-  flake.wallpaper = ./flower-painting.jpg;
+  flake.wallpaper = ./stone-faces.jpg;
 }

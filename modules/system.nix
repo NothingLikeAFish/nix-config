@@ -7,6 +7,7 @@
       system-audio
       system-locales
       system-networking
+      system-services
     ];
   };
 
@@ -54,5 +55,9 @@
   flake.modules.nixos.system-networking = {
     networking.networkmanager.enable = true;
     # Add bluetooth
+  };
+
+  flake.modules.nixos.system-services = {
+    services.printing.enable = true; # Printing support
   };
 }

@@ -14,5 +14,8 @@
       extraGroups = [ "networkmanager" "wheel" ];
       initialPassword = "1234";
     };
+    home-manager.users.jasper = {
+      home.stateVersion = "26.05";
+    };
   };
 }

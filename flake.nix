@@ -5,8 +5,8 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     import-tree.url = "github:vic/import-tree";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    wrapper-modules = {
-      url = "github:nix-community/nix-wrapper-modules";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
@@ -17,10 +17,8 @@
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
     imports = [
-      (inputs.import-tree [ ./modules ./wrappers ./wallpapers ])
+      (inputs.import-tree [ ./modules ./wallpapers ])
       inputs.flake-parts.flakeModules.modules
-      inputs.wrapper-modules.flakeModules.wrappers
     ];
-    systems = [ "x86_64-linux" "aarch64-linux" ];
   };
 }

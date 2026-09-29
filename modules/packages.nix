@@ -1,4 +1,4 @@
-{ inputs, self, ... }:
+{ { inputs, self, ... }:
 
 {
   flake.modules.nixos.packages = { pkgs, ... }: {
@@ -6,8 +6,10 @@
       packages-cli
       packages-fonts
       packages-browsers
+      packages-coding
 
       packages-swayfx
+      packages-waybar
     ];
   };
 
@@ -23,6 +25,7 @@
       git
       micro
       tree
+      fastfetch
     ];
   };
 
@@ -32,7 +35,9 @@
     ];
   };
 
-  flake.modules.nixos.packages-swayfx = { pkgs, ... }: { # Decide to keep here or move to modules/packages
-    programs.sway = { enable = true; package = self.packages.${pkgs.stdenv.hostPlatform.system}.swayfx; };
+  flake.modules.nixos.packages-coding = { pkgs, ... }: {
+    environment.systemPackages = with pkgs; [
+      zed-editor
+    ];
   };
 }
