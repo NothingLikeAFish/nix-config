@@ -6,7 +6,7 @@
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
-      extraSpecialArgs = { inherit inputs };
+      extraSpecialArgs = { inherit inputs; };
       sharedModules.programs.home-manager.enable = true; # Enable home-manager for every user
     };
   };
