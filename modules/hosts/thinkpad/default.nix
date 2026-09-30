@@ -8,13 +8,10 @@
 
   flake.modules.nixos.hosts-thinkpad = { config, pkgs, ... }: {
     imports = with self.modules.nixos; [
-      home-manager
       system
       users
 
       packages
-      #services
-      theme
     ];
 
     networking.hostName = "thinkpad"; # Hostname

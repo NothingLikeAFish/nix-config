@@ -9,9 +9,7 @@
       packages-coding
 
       packages-swayfx
-      packages-waybar
       packages-foot
-      packages-rofi
     ];
   };
 
@@ -41,5 +39,12 @@
     environment.systemPackages = with pkgs; [
       zed-editor
     ];
+  };
+
+  flake.modules.nixos.packages-swayfx = { pkgs, ... }: {
+    programs.sway = { enable = true; package = self.packages.${pkgs.stdenv.hostPlatform.system}.swayfx; };
+  };
+  flake.modules.nixos.packages-foot = { pkgs, ... }: {
+    programs.foot = { enable = true; package = self.packages.${pkgs.stdenv.hostPlatform.system}.foot; };
   };
 }

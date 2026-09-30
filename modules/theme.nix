@@ -1,35 +1,18 @@
 { inputs, self, ... }:
 
 {
-  flake.modules.nixos.theme = {
-    imports = with self.modules.nixos; [
-      theme-colours
-      theme-cursor
-    ];
-  };
+  flake.wallpaper = ./wallpapers/swan-pond.jpg;
 
-  flake.modules.nixos.theme-colours = { config, pkgs, ... }: {
-    imports = [ inputs.stylix.nixosModules.stylix ];
-    stylix = {
-      enable = true;
-      image = self.wallpaper;
-      polarity = "dark";
-      autoEnable = false;
-    };
-    _module.args.colours = config.lib.stylix.colors; # Exports theme
-  };
-
-  flake.modules.nixos.theme-cursor = { pkgs, ... }: {
-    home-manager.users.jasper = {
-      home.pointerCursor = {
-        enable = true;
-        package = pkgs.bibata-cursors;
-        name = "Bibata-Modern-Classic";
-        size = 24;
-        gtk.enable = true;
-        x11.enable = true;
-        sway.enable = true;
-      };
-    };
-  };
+  flake.colours = builtins.fromJSON (
+    builtins.readFile (
+      with inputs.nixpkgs.legacyPackages.x86_64-linux;
+      runCommand "colours.json"
+        {
+          nativeBuildInputs = [ flavours yq-go ];
+        }
+        ''
+          flavours generate dark "${self.wallpaper}" --stdout | yq -o=json '.' > "$out"
+        ''
+    )
+  );
 }
