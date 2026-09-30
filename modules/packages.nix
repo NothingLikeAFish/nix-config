@@ -10,6 +10,8 @@
 
       packages-swayfx
       packages-waybar
+      packages-foot
+      packages-rofi
     ];
   };
 

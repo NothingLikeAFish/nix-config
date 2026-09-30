@@ -1,13 +1,13 @@
 { inputs, self, ... }:
 
 {
-  flake.modules.nixos.packages-swayfx = { pkgs, lib, colours, config, ... }: {
+  flake.modules.nixos.packages-swayfx = { pkgs, lib, colours, ... }: {
     programs.sway = {
       enable = true;
       package = pkgs.swayfx;
     };
 
-    home-manager.users.jasper = {
+    home-manager.users.jasper = { config, ... }: {
       wayland.windowManager.sway = {
         enable = true;
         package = pkgs.swayfx;
@@ -16,18 +16,21 @@
           animation_duration_ms 250
           corner_radius 0
           shadows enable
+          default_dim_inactive 0.05
         '';
         config = {
           startup = [ # Things to start
             { command = lib.getExe pkgs.autotiling; }
           ];
 
+          defaultWorkspace = "workspace number 1";
+
           output."*".bg = "${self.wallpaper} fill"; # Wallpaper
 
-          bars = [ { command = "${lib.getExe pkgs.waybar} --log-level off"; } ]; # Waybar
+          bars = [ { command = "${lib.getExe pkgs.waybar}"; } ]; # Waybar
 
           bindswitches = { # Clamshell logic
-            "lid:on" = { reload = true; locked = true; action = "output eDP-1 diable"; };
+            "lid:on" = { reload = true; locked = true; action = "output eDP-1 disable"; };
             "lid:off" = { reload = true; locked = true; action = "output eDP-1 enable"; };
           };
 
@@ -48,13 +51,13 @@
             "${mod}+q" = "kill";
             "${mod}+f" = "fullscreen";
             "${mod}+Left" = "focus left";
+            "${mod}+Right" = "focus right";
             "${mod}+Down" = "focus down";
             "${mod}+Up" = "focus up";
-            "${mod}+Right" = "focus right";
             "${mod}+Shift+Left" = "move left";
+            "${mod}+Shift+Right" = "move right";
             "${mod}+Shift+Down" = "move down";
             "${mod}+Shift+Up" = "move up";
-            "${mod}+Shift+Right" = "move right";
             "${mod}+Shift+space" = "floating toggle";
             "${mod}+1" = "workspace number 1";
             "${mod}+2" = "workspace number 2";
@@ -81,9 +84,18 @@
             "${mod}+Shift+e" = "exec swaynag -t warning -m 'Do you want to exit sway?' -B 'Exit sway' 'swaymsg exit'";
           };
 
+          focus = {
+            mouseWarping = "container";
+          };
+
           gaps.inner = 8;
 
           window = {
+            titlebar = false;
+            border = 0;
+          };
+
+          floating = {
             titlebar = false;
             border = 2;
           };

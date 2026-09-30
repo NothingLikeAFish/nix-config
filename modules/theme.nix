@@ -8,11 +8,12 @@
     ];
   };
 
-  flake.modules.nixos.theme-colours = { config, ... }: {
+  flake.modules.nixos.theme-colours = { config, pkgs, ... }: {
     imports = [ inputs.stylix.nixosModules.stylix ];
     stylix = {
       enable = true;
       image = self.wallpaper;
+      polarity = "dark";
       autoEnable = false;
     };
     _module.args.colours = config.lib.stylix.colors; # Exports theme

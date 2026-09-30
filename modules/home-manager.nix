@@ -7,7 +7,9 @@
       useGlobalPkgs = true;
       useUserPackages = true;
       extraSpecialArgs = { inherit inputs; };
-      sharedModules = [{ programs.home-manager.enable = true; }]; # Enable home-manager for every user
+      users.jasper = {
+        programs.home-manager.enable = true; # Enable home-manager for every user
+      };
     };
   };
 }
